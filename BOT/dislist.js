@@ -82,12 +82,16 @@ client.on('message', msg => {
                 var rankNumber = 2;
                 break;
               case 50:
-                var serverRank = "Diamond";
+                var serverRank = "Platinum";
                 var rankNumber = 3;
                 break;
               case 100:
-                var serverRank = "Ruby";
+                var serverRank = "Diamond";
                 var rankNumber = 4;
+                break;
+              case 200:
+                var serverRank = "Ruby";
+                var rankNumber = 5;
                 break;
                 default:
                   var serverRank = "Bronze";
@@ -125,7 +129,36 @@ client.on('message', msg => {
             break;
 
             case config.prefix + 'stats':
+                db.table('Servers').get(msg.guild.id.toString()).run(global.conn, (err, res) => {
+                  if(err)console.log(chalk.red(err));
+                  if(res != null){
+                    var ownername = msg.guild.members.cache.get(res.owner);
+                    if(res.preiumTier > 0){
+                      var premium = true;
+                    }else{
+                      var premium = false;
+                    }
+                    defaultembed = new Discord.MessageEmbed()
+                    .setTitle(msg.guild.name.toUpperCase() + ` STATS`)
+                    .addField('Name', `${res.name}`, true)
+                    .addField('Owner', `${ownername.user.username}`, true)
+                    .addField('Premium', `${premium}`, true)
+          
+                    .setThumbnail(msg.guild.iconURL())
+                    .setColor(config.embedcolor.message)
+          
+                    embed = defaultembed;
+                    msg.channel.send({embed});
+                  }else{
+                    defaultembed = new Discord.MessageEmbed()
+                    .setAuthor(`This server is not posted on DisList.xyz. ❌`)
                 
+                    .setColor(config.embedcolor.message)
+                
+                    embed = defaultembed;
+                    msg.channel.send({embed});
+                  }
+                });
             break;
 
             case config.prefix + 'bump':
