@@ -423,6 +423,15 @@ socket.on('bumpServer', (data) => {
 
 
 
+
+socket.on('listServers', () => {
+    r.table('Servers').orderBy(r.desc('lastBumpTime')).limit(20).run(global.conn, (err, res) => {
+        if(err)console.log(chalk.red(err));
+        socket.emit('displayServers', res);
+    });
+});
+
+
 });
 
 server.listen(port, () => {
