@@ -1,0 +1,7 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background-color: #222;
+    color: white;
+    overflow-x: hidden;
+}

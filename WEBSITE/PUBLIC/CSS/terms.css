@@ -1,0 +1,101 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background-color: #242423;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    color: white;
+    overflow-x: hidden;
+}
+
+.form-control:focus{
+    border-color: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.nav-link{
+    margin: 5px;
+    color: rgb(255, 255, 255) !important;
+    
+}
+
+.nav-link:hover, .nav-link:before, .active:before, .nav-link.active{
+    margin: 5px;
+    color: rgb(226, 226, 226) !important;
+}
+
+a.servercard{
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+}
+
+a.servercard:hover{
+    color: white;
+    background-color: #333;
+    text-decoration: none;
+}
+
+.btn-join{
+    background-color: #F5CB5C;
+    border-color: #F5CB5C;
+    color: #333;
+    font-weight: bold;
+    min-width: 100%;
+}
+.btn-join:hover{
+    background-color: rgb(255, 197, 36);
+    border-color: rgb(255, 197, 36);
+    color: #333;
+    font-weight: bold;
+    min-width: 100%;
+}
+
+.serverdesc{
+    background-color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    resize: none;
+    min-width: 100%;
+}
+
+
+.list-inline-item{
+    background-color: #333;
+    border-radius: 5px;
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+
+.list-inline-item:hover{
+    background-color: #222;
+    box-shadow: rgba(0, 0, 0, 0.514) 15px 15px 10px;
+    translate: -5px -5px;
+    border-radius: 5px;
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+
+i.fa-heart{
+    background: linear-gradient(-45deg, #F5CB5C, rgb(255, 195, 30), #ff3434, #ff2626);
+    background-size: 200px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

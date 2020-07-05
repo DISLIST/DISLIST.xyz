@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="DISLIST is a public discord server list. View popular servers by activity, bump time or by category.">
+    <meta property="og:description" content="DISLIST is a public discord server list. View popular servers by activity, bump time or by category." />
+    <meta property="og:site_name" content="DisList.xyz" />
+    <meta property="og:image" content="https://DisList.xyz/IMG/logo.png" />
+    <meta property="og:url" content="https://DisList.xyz/" />
+    <meta name="keywords" content="DisList, Discord, Server, List, Discord Server List, DisList.xyz, A Public Discord Server List">
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="https://DisList.xyz/IMG/logo.png">
+    <meta property="og:title" content="DISLIST | A Public Discord Server List" />
+    <script src="https://kit.fontawesome.com/815ce3e5d7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/addserver.css">
+
+    <title>DISLIST | Add Your Server</title>
+</head>
+<body onload="load()">
+
+
+  <div class="container-fluid p-0 m-0">
+    <nav class="navbar m-0 navbar-expand-lg navbar-dark justify-content-between">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="/" style="text-decoration: none;"><h3 class="my-auto" style="color: white; font-weight: bold;">DISLIST</h3></a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/servers"><i class="fas fa-server"></i> Servers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/leaderboard"><i class="fas fa-stream"></i> Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/premium"><i class="fas fa-gem"></i> Premium</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/status"><i class="fas fa-compass"></i> Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://discord.gg/823AwYy" target="_blank"><i class="fab fa-discord"></i> Support Server</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  </div>
+
+
+
+  <img src="../IMG/waveUp.svg" style="min-width: 100%; max-width: 100%; margin-bottom: -1px;">
+  <div class="container-fluid" style="background-color: #F5CB5C; margin: 0px; color: #333;">
+    <div class="row">
+      <div class="col-sm"></div>
+      <div class="col-sm-10" id="serverForm">
+        <div id="serversOwned">
+
+        </div>
+        <ul class="list-inline" id="addServerList">
+        </ul>
+      </div>
+      <div class="col-sm"></div>
+    </div>
+  </div>
+  <img src="../IMG/waveDown.svg" style="min-width: 100%; max-width: 100%; margin-top: -9px;">
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer>
+    <div class="container-fluid">
+        <div class="row mb-5">
+          <div class="col-sm-6 my-auto">
+            <img src="../IMG/logo.png" width="100" style="margin-bottom: 10px;">
+            <h3>DISLIST</h3>
+            <p>The simplest way to find discord servers.</p>
+            <p>&copy DisList.xyz 2020</p>
+            <p>Made with <i class="fas fa-heart" style="color: #F5CB5C;"></i> in Los Angeles, CA</p>
+          </div>
+          <div class="col-sm-3 my-auto">
+            <a class="nav-link" href="/servers"><i class="fas fa-server"></i> Servers</a>
+            <a class="nav-link" href="/leaderboard"><i class="fas fa-stream"></i> Leaderboard</a>
+            <a class="nav-link" href="https://discord.gg/823AwYy" target="_blank"><i class="fab fa-discord"></i> Support Server</a>
+          </div>
+          <div class="col-sm-3 my-auto">
+            <a class="nav-link" href="/premium"><i class="fas fa-gem"></i> Premium</a>
+            <a class="nav-link" href="/status"><i class="fas fa-compass"></i> Status</a>
+            <a class="nav-link" href="/terms"><i class="fas fa-book"></i> Terms</a>
+          </div>
+        </div>
+      </div>
+</footer>
+
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200354-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-169200354-1');</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="../JS/addserver.js"></script>
+
+</body>
+</html>
