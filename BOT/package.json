@@ -1,0 +1,19 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sharding.js",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "discord.js": "^12.2.0",
+    "os-utils": "0.0.14",
+    "rethinkdb": "^2.4.2",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
