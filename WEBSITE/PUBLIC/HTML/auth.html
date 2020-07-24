@@ -4,15 +4,15 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DISLIST is a public discord server list. View popular servers by activity, bump time or by category.">
-    <meta property="og:description" content="DISLIST is a public discord server list. View popular servers by activity, bump time or by category." />
-    <meta property="og:site_name" content="DisList.xyz" />
-    <meta property="og:image" content="https://DisList.xyz/IMG/logo.png" />
-    <meta property="og:url" content="https://DisList.xyz/" />
-    <meta name="keywords" content="DisList, Discord, Server, List, Discord Server List, DisList.xyz, A Public Discord Server List">
+    <meta name="description" content="DISLIST authentication page.">
+    <meta property="og:description" content="DISLIST authentication page." />
+    <meta property="og:site_name" content="DISLIST | Discord Server List" />
+    <meta property="og:image" content="https://DisList.xyz/IMG/logo.jpg" />
+    <meta property="og:url" content="https://DisList.xyz/auth" />
+    <meta name="keywords" content="DisList, Discord, Server, List, Discord Server List, Discord List, DisList.xyz, A Public Discord Server List">
     <meta property="og:type" content="website" />
-    <link rel="icon" href="https://DisList.xyz/IMG/logo.png">
-    <meta property="og:title" content="DISLIST | A Public Discord Server List" />
+    <link rel="icon" href="https://DisList.xyz/IMG/logo.jpg">
+    <meta property="og:title" content="DISLIST Discord Servers Bots and Templates | Authorizing..." />
     <script src="https://kit.fontawesome.com/815ce3e5d7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/auth.css">
 
-    <title>DISLIST | Authorizing...</title>
+    <title>DISLIST Discord Servers Bots and Templates | Authorizing...</title>
 </head>
 <body onload="load()">
 
 
         <div class="container-fluid main">
-            <img src="../IMG/logo.png" width="200px" style="margin-top: 7%">
+            <img src="../IMG/logo.jpg" width="200px" style="margin-top: 7%">
             <h1 class="pb-5" style="letter-spacing: 7px; padding-top: 50px;">DISLIST</h1>
             <h2>AUTHORIZING</h2>
         </div>
@@ -36,15 +36,21 @@
 
 
 
-
+    <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167978937-1"></script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-167978937-1');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172139788-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-172139788-1');</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../JS/auth.js"></script>
+    <script type="text/javascript" language="javascript">  
+        var versionUpdate = (new Date()).getTime();  
+        var script = document.createElement("script");  
+        script.type = "text/javascript";  
+        script.src = "../JS/auth.js?v=" + versionUpdate;  
+        document.body.appendChild(script);  
+    </script> 
 
 </body>
 </html>

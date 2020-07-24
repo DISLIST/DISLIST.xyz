@@ -4,15 +4,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DISLIST also known as DISCORD LIST is a public Discord server list. View popular Discord servers by server activity, server bump time or by server category.">
-    <meta property="og:description" content="DISLIST also known as DISCORD LIST is a public Discord server list. View popular Discord servers by server activity, server bump time or by server category." />
+    <meta name="description" content="No way you've been sent a discord server! Click me to find out what server this person wants you to check out.">
+    <meta property="og:description" content="No way you've been sent a discord server! Click me to find out what server this person wants you to check out.">
     <meta property="og:site_name" content="DISLIST | Discord Server List" />
-    <meta property="og:image" content="https://DisList.xyz/IMG/logo.png" />
-    <meta property="og:url" content="https://DisList.xyz/home" />
     <meta name="keywords" content="DisList, Discord, Server, List, Discord Server List, Discord List, DisList.xyz, A Public Discord Server List">
     <meta property="og:type" content="website" />
-    <link rel="icon" href="https://DisList.xyz/IMG/logo.png">
-    <meta property="og:title" content="DISLIST | Discord Servers Bots and Templates" />
+    <link rel="icon" href="https://DisList.xyz/IMG/logo.jpg">
+    <meta property="og:title" content="You've been sent a server." />
     <script src="https://kit.fontawesome.com/815ce3e5d7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
@@ -20,9 +18,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/index.css">
-
-    <title>DISLIST | Discord Servers Bots and Templates</title>
+    <link rel="stylesheet" href="../CSS/server.css">
 </head>
 <body onload="load()">
 
@@ -55,50 +51,11 @@
       </nav>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid pt-5" style="background-color: #F5CB5C; margin: 0px; color: white;">
     <div class="row">
       <div class="col-sm"></div>
-      <div class="col-sm-6">
-        <h1 class="mt-5 pt-3" style="font-size: 75px; color: #fff">DISLIST</h1>
-        <h5 style="font-weight: 300;">DISCOVER DISCORD SERVERS BOTS AND SERVER TEMPLATES</h5>
-          <div class="input-group m-auto mb-3" style="max-width: 600px; padding-bottom: 10px;">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="border: 1px solid white; background-color: white;"><i class="fas fa-search"></i></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Search for Servers" id="Search" aria-label="" aria-describedby="basic-addon1" style="border: 1px solid white;">
-            <div class="input-group-append">
-              <button class="btn btn-join" type="button" onclick="submit()">Search <i class="fas fa-search"></i></button>
-            </div>
-          </div>
-          <div class="mb-3" id="serverCount"></div>
-      </div>
-      <div class="col-sm"></div>
-    </div>
-  </div>
+      <div class="col-sm-6 mt-1 mb-5" id="serverCard">
 
-
-
-
-
-
-
-
-  <img src="../IMG/waveUp.svg" style="min-width: 100%; max-width: 100%; margin-bottom: -1px;">
-  <div class="container-fluid" style="background-color: #F5CB5C; margin: 0px; color: #333;">
-    <h1 class="p-5">RECENTLY BUMPED SERVERS</h1>
-    <div class="row">
-      <div class="col-sm"></div>
-      <div class="col-sm-12">
-          <ul class="list-inline" id="serverList">
-            
-          </ul>
-          <a href="/servers"><button class="btn btn-add2 mb-5" type="button" style="min-width: 300px;">View More Servers <i class="fas fa-angle-right"></i></button></a>
-
-          <h1 style="margin-top: 100px;">MOST ACTIVE SERVERS</h1>
-          <ul class="list-inline mt-5" id="activeServers">
-            
-          </ul>
-          <a href="/servers"><button class="btn btn-add2" type="button" style="min-width: 300px;">View More Servers <i class="fas fa-angle-right"></i></button></a>
       </div>
       <div class="col-sm"></div>
     </div>
@@ -120,7 +77,7 @@
     <div class="container-fluid">
         <div class="row mb-5">
           <div class="col-sm-6 my-auto">
-            <img src="../IMG/logo.png" width="100" style="margin-bottom: 10px;">
+            <img src="../IMG/logo.jpg" width="100" style="margin-bottom: 10px;">
             <h3>DISLIST</h3>
             <p>The simplest way to find discord servers.</p>
             <p>&copy DisList.xyz 2020</p>
@@ -143,6 +100,7 @@
     
 
 
+
     <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -155,9 +113,9 @@
       var versionUpdate = (new Date()).getTime();  
       var script = document.createElement("script");  
       script.type = "text/javascript";  
-      script.src = "../JS/index.js?v=" + versionUpdate;  
+      script.src = "../JS/server.js?v=" + versionUpdate;  
       document.body.appendChild(script);  
-  </script>  
+  </script> 
 
 </body>
 </html>

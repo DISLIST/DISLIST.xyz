@@ -8,31 +8,14 @@ body{
     overflow-x: hidden;
 }
 
-.dropdown-menu, a.dropdown-item:focus, a.dropdown-item{
-    background-color: #333;
-    color: white;
-}
-
-div.dropdown-divider{
-    border-color: #111;
-}
-
-a.dropdown-item:hover{
-    background-color: #222;
-    color: white;
-}
-
-.form-control:focus{
-    border-color: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
 .nav-link{
     margin: 5px;
     color: rgb(255, 255, 255) !important;
     
+}
+
+ul{
+    list-style-type: none;
 }
 
 .nav-link:hover, .nav-link:before, .active:before, .nav-link.active{
@@ -40,22 +23,10 @@ a.dropdown-item:hover{
     color: rgb(226, 226, 226) !important;
 }
 
-a.servercard{
-    text-decoration: none;
-    color: white;
-    background-color: #333;
-}
-
 .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none;
  }
-
-a.servercard:hover{
-    color: white;
-    background-color: #333;
-    text-decoration: none;
-}
 
 .btn-join{
     background-color: #F5CB5C;
@@ -103,49 +74,54 @@ a.servercard:hover{
 }
 
 
-.list-inline-item2{
-    background-color: transparent;
-    display: inline-block;
-}
-
-
-.list-inline-item{
+.list-item{
     background-color: #333;
     border-radius: 5px;
     transition-timing-function: ease-in-out;
     transition: 0.5s;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.list-inline-item:hover{
+.dropdown-menu, a.dropdown-item:focus, a.dropdown-item{
+    background-color: #333;
+    color: white;
+}
+
+a.servercard{
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+}
+
+a.servercard:hover{
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+}
+
+div.dropdown-divider{
+    border-color: #111;
+}
+
+a.dropdown-item:hover{
     background-color: #222;
+    color: white;
+}
+
+.list-item:hover{
+    background-color: #222;
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.514) 15px 15px 10px;
     translate: -5px -5px;
     border-radius: 5px;
     transition-timing-function: ease-in-out;
     transition: 0.5s;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.btn-add2{
-    background-color: #333;
-    border-color: #333;
-    color: white;
-    font-weight: bold;
-    padding: 25px;
-    transition-timing-function: ease-in-out;
-    transition: 0.5s;
-}
-.btn-add2:hover{
-    background-color: #222;
-    border-color: #222;
-    color: white;
-    padding: 25px;
-    font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.514) 15px 15px 10px;
-    translate: -3px -3px;
-    transition-timing-function: ease-in-out;
-    transition: 0.5s;
-    border-radius: 5px;
-}
 
 i.fa-heart{
     background: linear-gradient(-45deg, #F5CB5C, rgb(255, 195, 30), #ff3434, #ff2626);
@@ -165,14 +141,4 @@ i.fa-heart{
 	100% {
 		background-position: 0% 50%;
 	}
-}
-
-
-.serverdesc1{
-    background-color: #333;
-    border-radius: 5px;
-    color: white;
-    border: none;
-    resize: none;
-    min-width: 100%;
 }

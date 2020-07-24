@@ -10,24 +10,7 @@ function load(){
   }, 10000);
   socket.on('countsObtained', (data) => {
     document.getElementById('serverCount').innerHTML = `
-
-
-    <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm"> 
-    <h4>${data.serverCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<i style="font-style: normal; font-weight: 300;"> SERVERS</i></h4>
-    </div>
-    <div class="col-sm"> 
-    <h4>${data.botCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<i style="font-style: normal; font-weight: 300;"> BOTS</i></h4>
-    </div>
-    <div class="col-sm"> 
-    <h4>${data.templateCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<i style="font-style: normal; font-weight: 300;"> TEMPLATES</i></h4>
-    </div>
-    <div class="col-sm"> 
-    <h4>${data.userCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<i style="font-style: normal; font-weight: 300;"> USERS</i></h4>
-    </div>
-    <div class="col-sm-1"></div>
-    </div>
+    <h4>${data.serverCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<i style="font-style: normal; font-weight: 300;"> SERVERS IN TOTAL</i></h4>
     `;
   })
   var search = document.getElementById('Search');
@@ -91,8 +74,8 @@ search.addEventListener("keyup", function(event) {
   <a class="dropdown-item" href="/addtemplate"><i class="fas fa-book"></i> Add Template</a>
   </div>
   </div>
-            `;
-        });
+            `;  
+          });
 
 
     }else{
@@ -100,8 +83,71 @@ search.addEventListener("keyup", function(event) {
     }
 
 
-    socket.emit('listServers');
-        socket.on('displayServers', (data) => {
+
+
+
+    var params = (new URL(document.location)).searchParams;
+      if(params.get('filter') != null){
+        var filter = params.get('filter')
+        switch (params.get('filter').toLocaleLowerCase()) {
+          case 'level':
+            document.getElementById('filterSelect').value='level';
+            break;
+            case 'lastbumptime':
+              document.getElementById('filterSelect').value='lastBumpTime';
+              break;
+          default:
+            document.getElementById('filterSelect').value='lastBumpTime';
+            break;
+        }
+      }else{
+        var filter = 'lastBumpTime';
+        document.getElementById('filterSelect').value='lastBumpTime';
+      }
+
+
+
+
+      if(params.get('category') != null){
+        var category = params.get('category')
+        switch (params.get('category').toLocaleLowerCase()) {
+          case 'social':
+            document.getElementById('categorySelect').value='Social';
+            break;
+            case 'gaming':
+            document.getElementById('categorySelect').value='Gaming';
+            break;
+            case 'technology':
+            document.getElementById('categorySelect').value='Technology';
+            break;
+            case 'movies':
+            document.getElementById('categorySelect').value='Movies';
+            break;
+            case 'art':
+            document.getElementById('categorySelect').value='Art';
+            break;
+            case 'events':
+            document.getElementById('categorySelect').value='Events';
+            break;
+            case 'community':
+            document.getElementById('categorySelect').value='Community';
+            break;
+        
+          default:
+            document.getElementById('categorySelect').value='no';
+            break;
+        }
+      }else{
+        var category = 'lastBumpTime';
+        document.getElementById('categorySelect').value='no';
+      }
+
+    socket.emit('getServerList', ({ filter: filter, category: category}));
+
+
+
+
+        socket.on('serverListObtained', (data) => {
             serverList = data;
             for(i = 0; i < data.length; i++){
                 if(serverList[i].public == true){
@@ -141,21 +187,21 @@ search.addEventListener("keyup", function(event) {
                     case 1:
                         premiumLevel = `
                         <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium</kbd>
+                            <kbd style="background-color: aqua; font-size: small; color: #333;">Premium</kbd>
                         </li>`;
                         var border = 'border: 5px solid aqua;';
                         break;
                     case 2:
                         premiumLevel = `
                         <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium+</kbd>
+                            <kbd style="background-color: aqua; font-size: small; color: #333;">Premium+</kbd>
                         </li>`;
                         var border = 'border: 5px solid aqua;';
                         break;
                     case 3:
                         premiumLevel = `
                         <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium++</kbd>
+                            <kbd style="background-color: aqua; font-size: small; color: #333;">Premium++</kbd>
                         </li>`;
                         var border = 'border: 5px solid aqua;';
                         break;
@@ -186,7 +232,7 @@ search.addEventListener("keyup", function(event) {
                       </ul>
                     </div>
                     <div class="col-sm-4 my-auto">
-                    <img src="../IMG/${serverList[i].rank}.svg" alt="${filterXSS(serverList[i].rank)}" width="40px">
+                    <img src="../IMG/${serverList[i].rank}.svg" alt="${serverList[i].rank}" width="40px">
                     <h4> Lvl ${serverList[i].level.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<h4>
                     <h6>Xp: ${xpParse(serverList[i].xp)} / ${xpParse(serverList[i].xpNeeded)}</h6>
                       <div class="progress" style="background-color: #444;">
@@ -213,121 +259,6 @@ search.addEventListener("keyup", function(event) {
             };
         });
 
-
-
-        socket.emit('listActiveServers');
-        socket.on('displayActiveServers', (data) => {
-            activeList = data;
-            for(i = 0; i < data.length; i++){
-                if(activeList[i].public == true){
-                  if(parseInt((activeList[i].xp / activeList[i].xpNeeded) * 100) < 5){
-                    var progressColor = 'color: white;'
-                  }else{
-                    var progressColor = 'color: #333;'
-                  }
-                var logourl;
-                var explicitContent;
-                var publicContent;
-                var premiumLevel;
-                if(activeList[i].explicit == true){
-                    explicitContent = `<li class="list-inline-item m-1">
-                    <kbd style="background-color: rgb(255, 97, 97); color: #333;">Explicit</kbd>
-                  </li>`;
-                }else{
-                    explicitContent = ``;
-                }
-                if(activeList[i].public == true){
-                    publicContent = `<li class="list-inline-item m-1">
-                    <kbd style="background-color: rgb(47, 255, 92); font-size: small; color: #333;">Public</kbd>
-                  </li>`;
-                }else{
-                    publicContent = `<li class="list-inline-item m-1">
-                    <kbd style="background-color: rgb(255, 97, 97); font-size: small; color: white;">Private</kbd>
-                  </li>`;
-                }
-                switch (activeList[i].premiumTier) {
-                    case 0:
-                        premiumLevel = `
-                        <li class="list-inline-item2 m-1">
-                          <kbd style="background-color: transparent; font-size: small;">⠀⠀⠀⠀⠀⠀⠀⠀</kbd>
-                        </li>`;
-                        var border = '';
-                        break;
-                    case 1:
-                        premiumLevel = `
-                        <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium</kbd>
-                        </li>`;
-                        var border = 'border: 5px solid aqua;';
-                        break;
-                    case 2:
-                        premiumLevel = `
-                        <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium+</kbd>
-                        </li>`;
-                        var border = 'border: 5px solid aqua;';
-                        break;
-                    case 3:
-                        premiumLevel = `
-                        <li class="list-inline-item m-1">
-                            <kbd style="background-color: rgb(0, 255, 255); font-size: small; color: #333;">Premium++</kbd>
-                        </li>`;
-                        var border = 'border: 5px solid aqua;';
-                        break;
-                }
-                if(activeList[i].icon === null){
-                    logourl = '../IMG/dslogo.jpg';
-                }else{
-                    logourl = `https://cdn.discordapp.com/icons/${activeList[i].id}/${activeList[i].icon}.jpg`;
-                }
-                document.getElementById('activeServers').innerHTML += `
-                <li class="list-inline-item m-2" style="max-width: 500px; ${border}">
-                <a class="servercard" href="/server?id=${activeList[i].id}">
-                <div class="m-3">
-                  <div class="row">
-                    <div class="col-sm-3 my-auto">
-                      <img src="${logourl}" alt="${filterXSS(activeList[i].name)}" class="rounded-circle" width="90px">
-                    </div>
-                    <div class="col-sm-5 my-auto" style="text-align: left;">
-                    <h4 style="max-height: 30px; overflow: hidden;">${filterXSS(activeList[i].name)}</h4>
-                      <h6><i class="fas fa-users"></i> ${activeList[i].users.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h6>
-                      <ul class="list-inline">
-                        <li class="list-inline-item m-1">
-                          <kbd style="background-color: #ffbb00; color: #333;">${activeList[i].category}</kbd>
-                        </li>
-                        ${explicitContent}
-                        ${publicContent}
-                        ${premiumLevel}
-                      </ul>
-                    </div>
-                    <div class="col-sm-4 my-auto">
-                    <img src="../IMG/${activeList[i].rank}.svg" alt="${filterXSS(activeList[i].rank)}" width="40px">
-                    <h4> Lvl ${activeList[i].level.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<h4>
-                    <h6>Xp: ${xpParse(activeList[i].xp)} / ${xpParse(activeList[i].xpNeeded)}</h6>
-                    <div class="progress" style="background-color: #444;">
-                      <div class="progress-bar bg-warning" role="progressbar" style="font-weight: bold; ${progressColor} !important; width: ${parseInt((activeList[i].xp / activeList[i].xpNeeded) * 100)}%;" aria-valuenow="${parseInt((activeList[i].xp / activeList[i].xpNeeded) * 100)}" aria-valuemin="0" aria-valuemax="100">${parseInt((activeList[i].xp / activeList[i].xpNeeded) * 100)}%</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div style="text-align: left;">
-                  <h6 class="pt-4">Description:</h6>
-                  <textarea disabled class="serverdesc1 mb-3">${filterXSS(activeList[i].description)}</textarea>
-                  </div>
-                </div>
-              </a>
-              <div class="m-3">
-                <div class="row">
-                  <div class="col-sm">
-                  <button class="btn btn-join" type="button" onclick="joinActiveServer(${i})" ><i class="fas fa-sign-in-alt"></i> Join</button>
-                  </div>
-                </div>
-              </div>
-            </li>
-                `;
-            };
-            };
-        });
-
     console.log('%c HEY YOU SHOULDNT BE HERE', 'color: #F5CB5C; font-size: 50px;');
     console.log('%c Would you kindly not look at our source?', 'color: #F5CB5C; font-size: 25px;');
     console.log('%c Unless of course an official DisList staff member asked you to go in here.', 'color: #F5CB5C; font-size: 25px;');
@@ -337,8 +268,33 @@ function joinServer(i){
     window.open(serverList[i].invite);
 }
 
-function joinActiveServer(i){
-    window.open(activeList[i].invite);
+function logout(){
+    window.localStorage.removeItem('id');
+    window.location.href = '/';
+}
+
+
+function filter(){
+  var filter = document.getElementById('filterSelect').value;
+  var category = document.getElementById('categorySelect').value;
+  if(category != 'no'){
+    window.location.href= `/servers?filter=${filter}&category=${category}`;
+  }else{
+    window.location.href= `/servers?filter=${filter}`;
+  }
+}
+
+function submit(){
+  var search = document.getElementById('Search');
+  window.location.href = `/search?keyword=${search.value.toString()}`
+}
+
+function addYourServer(){
+  if(window.localStorage.getItem('id') != null){
+    window.location.href = '/addserver';
+  }else{
+    window.location.href = 'https://discord.com/oauth2/authorize?client_id=720426204955410454&redirect_uri=https%3A%2F%2Fdislist.xyz%2Fauth&response_type=code&scope=identify%20guilds';
+  }
 }
 
 function xpParse (value) {
@@ -350,14 +306,3 @@ function xpParse (value) {
   }
   return shortValue+suffixes[suffixNum];
 }
-
-function logout(){
-    window.localStorage.removeItem('id');
-    window.location.href = '/';
-}
-
-function submit(){
-  var search = document.getElementById('Search');
-  window.location.href = `/search?keyword=${search.value.toString()}`
-}
-
