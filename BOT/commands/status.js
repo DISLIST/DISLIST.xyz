@@ -16,7 +16,6 @@ module.exports = function status(msg, discord, client, os, config){
 
     //INFO
     .addField('Uptime:', parseInt(days).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'D ' + parseInt(hours) + 'H ' + parseInt(minutes) + 'M ' + parseInt(seconds) + 'S', true)
-    .addField('Active Shards:', client.shard.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' Shards', true)
     .addField('Guilds:', client.guilds.cache.size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
     .addField('Connected Users:', client.users.cache.size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
     .addField('Bots Ping:', parseInt(client.ws.ping), true)
