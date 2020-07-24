@@ -347,7 +347,13 @@ client.on('message', msg => {
             case config.prefix + 'invite':
               if(msg.guild.members.cache.get(msg.author.id).hasPermission('ADMINISTRATOR')){
                 if(msg.guild.members.cache.get(client.user.id).hasPermission('CREATE_INSTANT_INVITE')){
-                var newInv = msg.channel.createInvite({maxAge: 0});
+                if(msg.mentions.channels.first()) {
+                    const newInv = msg.mentions.channels.first().createInvite({maxAge: 0});
+                }
+                else {
+                    const newInv = msg.channel.createInvite({maxAge: 0});
+                }
+                    
               newInv.then((inv) => {
                 db.table('Servers').get(msg.guild.id.toString()).run(global.conn, (err, res) => {
                   if(err)console.log(chalk.red(err));
