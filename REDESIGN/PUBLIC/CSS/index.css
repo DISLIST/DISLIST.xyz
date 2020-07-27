@@ -1,0 +1,104 @@
+body{
+    background-color: #16171b;
+    font-family: 'Monsterrat', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.navBorder{
+    border-image-source: linear-gradient(-45deg, #8400ff, rgb(0, 119, 255), #34ffdd, #26ff88);
+    border-bottom: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-image-slice: 1;
+}
+
+.btn-dislist{
+    border: 2px solid rgb(0, 255, 234);
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+    color: white;
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+
+.btn-dislist:hover{
+    border: 2px solid rgb(0, 162, 255);
+    border-radius: 25px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.514) 15px 15px 10px;
+    translate: -3px -3px;
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+  
+#particles-js canvas {
+    display: block;
+    vertical-align: bottom;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+    top: 0;
+    left: 0
+}
+
+footer{
+    background-color: #202228;
+    text-align: left;
+}
+
+a.listlink{
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    padding: 5px;
+    color: rgb(165, 165, 165);
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+
+a.listlink:hover{
+    border-bottom: 2px solid rgb(0, 255, 234);
+    text-decoration: none;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    transition-timing-function: ease-in-out;
+    transition: 0.5s;
+}
+
+hr {
+    height: 1px;
+    background-image: linear-gradient(-45deg, transparent, transparent, #8400ff, rgb(0, 119, 255), #34ffdd, #26ff88, transparent, transparent);
+    background-size: 200%;
+    animation: gradient 20s ease infinite;
+    max-width: 500px;
+    border-radius: 150px;
+}
+
+.assistance{
+    background-color: #1d1e22;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
