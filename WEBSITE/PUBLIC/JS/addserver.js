@@ -152,7 +152,7 @@ if(document.getElementById('categorySelect').value != 'no'){
     userID: window.localStorage.getItem('id'),
     serverID: serverList[num].id,
     category: filterXSS(document.getElementById('categorySelect').value),
-    tags: tags,
+    tags: filterXSS(tags),
     description: filterXSS(document.getElementById('description').value),
     explicit: document.getElementById('explicit').checked
   });
